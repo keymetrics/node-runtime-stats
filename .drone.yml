@@ -11,4 +11,9 @@ pipeline:
       - yarn
       - npx prebuild --all -t  -u $GITHUB_TOKEN
     when:
-      event: tag
+      event: [ tag ]
+  publish_npm:
+    image: plugins/npm
+    secrets: [ npm_username, npm_password, npm_email ]
+    when:
+      event: [ tag ]
