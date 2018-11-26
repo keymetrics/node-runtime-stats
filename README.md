@@ -10,20 +10,18 @@ amount of time spent in each.
 
 ```json
 {
-  "counters": {
-    "node.gc.collections": 748,
-    "node.gc.pause.ns": 92179835,
-    "node.gc.old.collections": 2,
-    "node.gc.old.pause.ns": 671054,
-    "node.gc.young.collections": 746,
-    "node.gc.young.pause.ns": 91508781
+  "gc": {
+    "collections": 0,
+    "pause": 0,
+    "oldCollections": 0,
+    "oldPause": 0,
+    "youngCollections": 0,
+    "youngPause": 0
   },
-  "gauges": {
-    "node.eventloop.usage.percent": 0.12,
-    "node.eventloop.delay.ms.median": 5,
-    "node.eventloop.delay.ms.p95": 100,
-    "node.eventloop.delay.ms.p99": 100,
-    "node.eventloop.delay.ms.max": 100
-  }
+  "eventloopUsage": 0.001
 }
 ```
+
+## Source
+
+Inspired from https://github.com/heroku/heroku-nodejs-plugin
