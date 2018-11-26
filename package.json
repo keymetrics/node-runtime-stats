@@ -8,7 +8,6 @@
     "test": "cov8 mocha tests"
   },
   "dependencies": {
-    "measured": "^1.1.0",
     "nan": "^2.9.2",
     "node-gyp": "^3.7.0",
     "prebuild-install": "^5.2.1"
