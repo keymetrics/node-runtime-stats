@@ -1,0 +1,23 @@
+{
+  "name": "@pm2/node-runtime-stats",
+  "version": "0.1.0",
+  "description": "A module that forwards stats from a Node process",
+  "main": "lib/index.js",
+  "scripts": {
+    "install": "prebuild-install || node-gyp rebuild",
+    "test": "cov8 mocha tests"
+  },
+  "dependencies": {
+    "measured": "^1.1.0",
+    "nan": "^2.9.2",
+    "node-gyp": "^3.7.0",
+    "prebuild-install": "^5.2.1"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/keymetrics/node-runtime-stats",
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "prebuild": "^8.1.2",
+    "v8-coverage": "^1.0.8"
+  }
+}
