@@ -4,8 +4,11 @@ pipeline:
     environment:
       - NODE_ENV=test
     commands:
-      - yarn
-      - npm run test
+      - node -v
+      - yarn -v
+      - uname -r
+      - yarn install --ignore-engines
+      - yarn test
   build:
     image: node:10
     secrets: [ github_token ]

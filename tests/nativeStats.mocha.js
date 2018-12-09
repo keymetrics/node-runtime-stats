@@ -1,6 +1,8 @@
 /* eslint-env mocha */
+'use strict'
 
 const RuntimeStats = require('../lib/index.js')
+const assert = require('assert')
 
 describe('nativeStats', _ => {
   let rstats = null
@@ -17,9 +19,11 @@ describe('nativeStats', _ => {
 
   it('should emit an object', done => {
     rstats.once('sense', obj => {
-      if (obj === undefined || obj.gc === undefined || obj.ticks) {
-        throw new Error('Object received is undefined')
-      }
+      // do not remove, its to see the output with the CI
+      console.log(obj)
+      assert(obj !== undefined, 'should have received object')
+      assert(typeof obj.gc === 'object', 'should have received gc metrics')
+      assert(Array.isArray(obj.ticks), 'should have given the lasts ticks durations')
       done()
     })
   })
