@@ -17,7 +17,7 @@ describe('nativeStats', _ => {
 
   it('should emit an object', done => {
     rstats.once('sense', obj => {
-      if (obj === undefined || obj.gc === undefined) {
+      if (obj === undefined || obj.gc === undefined || obj.ticks) {
         throw new Error('Object received is undefined')
       }
       done()

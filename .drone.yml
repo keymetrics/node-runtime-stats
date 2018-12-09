@@ -1,6 +1,8 @@
 pipeline:
   tests:
-    image: node:10
+    image: node:${NODE_VERSION}
+    environment:
+      - NODE_ENV=test
     commands:
       - yarn
       - npm run test
@@ -17,3 +19,10 @@ pipeline:
     secrets: [ npm_username, npm_password, npm_email ]
     when:
       event: [ tag ]
+matrix:
+  NODE_VERSION:
+    - 4
+    - 6
+    - 8
+    - 10
+    - 11
