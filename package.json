@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "install": "prebuild-install || node-gyp rebuild",
-    "test": "cov8 mocha tests"
+    "test": "mocha tests"
   },
   "dependencies": {
     "nan": "^2.9.2",
@@ -16,7 +16,6 @@
   "repository": "https://github.com/keymetrics/node-runtime-stats",
   "devDependencies": {
     "mocha": "^5.2.0",
-    "prebuild": "^8.1.2",
-    "v8-coverage": "^1.0.8"
+    "prebuild": "^8.1.2"
   }
 }

@@ -18,7 +18,11 @@ amount of time spent in each.
     "youngCollections": 0,
     "youngPause": 0
   },
-  "eventloopUsage": 0.001
+  // duration of event loop tick
+  "ticks": [
+    20,
+    10
+  ]
 }
 ```
 
