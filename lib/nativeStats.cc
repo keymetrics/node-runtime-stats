@@ -122,10 +122,14 @@ NAN_METHOD(start)
   reset();
 
   // Event loop callbacks
+  // uv_check are called after the IO polling
+  // http://docs.libuv.org/en/v1.x/check.html#c.uv_check_t
   uv_check_init(uv_default_loop(), &check_handle);
   uv_check_start(&check_handle, reinterpret_cast<uv_check_cb>(on_check));
   uv_unref(reinterpret_cast<uv_handle_t *>(&check_handle));
 
+  // uv_prepare are called before the IO polling
+  // http://docs.libuv.org/en/v1.x/prepare.html#c.uv_prepare_t
   uv_prepare_init(uv_default_loop(), &prepare_handle);
   uv_prepare_start(&prepare_handle, reinterpret_cast<uv_prepare_cb>(on_prepare));
   uv_unref(reinterpret_cast<uv_handle_t *>(&prepare_handle));
