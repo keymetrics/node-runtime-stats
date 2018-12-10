@@ -37,7 +37,7 @@ void reset()
 // http://docs.libuv.org/en/v1.x/design.html#the-i-o-loop
 void on_check(uv_check_t *handle)
 {
-  tick_start = uv_hrtime() / static_cast<uint64_t>(1e6);
+  tick_start = uv_hrtime();
 }
 
 void on_prepare(uv_prepare_t *handle)
@@ -46,7 +46,7 @@ void on_prepare(uv_prepare_t *handle)
   {
     return;
   }
-  const uint64_t tick_end = uv_hrtime() / static_cast<uint64_t>(1e6);
+  const uint64_t tick_end = uv_hrtime();
   if (tick_end < tick_start)
   {
     // Should not happen
@@ -98,7 +98,7 @@ static NAN_METHOD(sense)
   int i = 0;
   for (it = durations.begin(); it != durations.end(); ++it)
   {
-    Nan::Set(array, i, Nan::New(static_cast<double>(*it)));
+    Nan::Set(array, i, Nan::New(static_cast<float>(*it) / static_cast<uint64_t>(1e6)));
     i += 1;
   }
 
