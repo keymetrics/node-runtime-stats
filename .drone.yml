@@ -10,9 +10,10 @@ pipeline:
       - yarn install --ignore-engines
       - yarn test
   build:
-    image: node:10
+    image: node:${NODE_VERSION}
     secrets: [ github_token ]
     commands:
+      - if [ "$NODE_VERSION" != "10" ]; then exit; fi
       - yarn
       - npx prebuild --all -t  -u $GITHUB_TOKEN
     when:
