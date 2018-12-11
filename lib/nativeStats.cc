@@ -117,17 +117,18 @@ static NAN_METHOD(sense)
 
   // Call libuv to get the values we'll return.
   int err = uv_getrusage(&rusage);
-  Nan::Set(usage, Nan::New("ru_nvcsw").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_nvcsw)));
-  Nan::Set(usage, Nan::New("ru_nivcsw").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_nivcsw)));
-  Nan::Set(usage, Nan::New("ru_nsignals").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_nsignals)));
-  Nan::Set(usage, Nan::New("ru_msgrcv").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_msgrcv)));
-  Nan::Set(usage, Nan::New("ru_msgsnd").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_msgsnd)));
-  Nan::Set(usage, Nan::New("ru_oublock").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_oublock)));
-  Nan::Set(usage, Nan::New("ru_inblock").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_inblock)));
-  Nan::Set(usage, Nan::New("ru_nswap").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_nswap)));
-  Nan::Set(usage, Nan::New("ru_majflt").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_majflt)));
-  Nan::Set(usage, Nan::New("ru_minflt").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_minflt)));
-
+  if (err == 0) {
+    Nan::Set(usage, Nan::New("ru_nvcsw").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_nvcsw)));
+    Nan::Set(usage, Nan::New("ru_nivcsw").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_nivcsw)));
+    Nan::Set(usage, Nan::New("ru_nsignals").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_nsignals)));
+    Nan::Set(usage, Nan::New("ru_msgrcv").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_msgrcv)));
+    Nan::Set(usage, Nan::New("ru_msgsnd").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_msgsnd)));
+    Nan::Set(usage, Nan::New("ru_oublock").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_oublock)));
+    Nan::Set(usage, Nan::New("ru_inblock").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_inblock)));
+    Nan::Set(usage, Nan::New("ru_nswap").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_nswap)));
+    Nan::Set(usage, Nan::New("ru_majflt").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_majflt)));
+    Nan::Set(usage, Nan::New("ru_minflt").ToLocalChecked(), Nan::New(static_cast<double>(rusage.ru_minflt)));
+  }
 
   Nan::Set(obj, Nan::New("usage").ToLocalChecked(), usage);
 
