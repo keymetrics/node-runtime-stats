@@ -24,6 +24,7 @@ describe('nativeStats', _ => {
       assert(obj !== undefined, 'should have received object')
       assert(typeof obj.gc === 'object', 'should have received gc metrics')
       assert(Array.isArray(obj.ticks), 'should have given the lasts ticks durations')
+      assert(typeof obj.usage === 'object', 'should have received usage metrics')
       done()
     })
   })
