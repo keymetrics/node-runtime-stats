@@ -1,6 +1,6 @@
 {
   "name": "@pm2/node-runtime-stats",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A module that forwards stats from a Node process",
   "main": "lib/index.js",
   "scripts": {
